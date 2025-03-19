@@ -41,44 +41,67 @@ public class CheckingAccount implements HasMenu{
 				keepGoing = false;
 			} // End if
 			if(input.equals("1")){
-				System.out.println("Checking balance");
+				checkBalance();
 			} // End if
 			if(input.equals("2")){
-				System.out.println("Depositing");
+				makeDeposit();
 			} // End if
 			if(input.equals("3")){
-				System.out.println("Withdrawing");
+				makeWithdrawl();
 			} // End if
 		} // End while
 	} // End start
 
 	public double getBalance(){
-		return this.balance();
+		return balance;
 	} // End getBalance
 
 	public String getBalanceString(){
-
+		// I am very glad I took a picture of String.format...
+		String balString = String.format("$%.02f", this.balance);
+		return balString;
 	} // End getBalanceString
 
 	public void setBalance(double balance){
-		CheckingAccount.balance = balance;
+		this.balance = balance;
 	} // End setBalance
 
 	public void checkBalance(){
-		// Print current balance
+		String bal = getBalanceString();
+		System.out.println(bal);
 	} // End checkBalance
 
 	private double getDouble(){
-		// Will be userful later
+		Scanner input = new Scanner(System.in);
+		String userInput = input.nextLine();
+		try{
+			double tempBalance = Double.parseDouble(userInput);
+			return tempBalance;
+		} catch (Exception e) {
+			System.out.print("Invalid input. Changing to 0. ");
+		}
+		return 0d;
 	} // End getDouble
 
 	public void makeDeposit(){
-		// Ask user how much they want to depoit
-		// Add that to balance
+		System.out.println("");
+		System.out.println("How much would you like to deposit?");
+		Double deposit = getDouble();
+		this.balance += deposit;
+		String newBal = getBalanceString();
+		System.out.println("Your new balance is " + newBal);
 	} // End makeDeposit
 
 	public void makeWithdrawl(){
-		// Ask user how much they want to withdraw
-		// Subtract that from balance
+		System.out.println("");
+		System.out.println("How much would you like to withdraw?");
+		Double withdrawl = getDouble();
+		if(withdrawl > this.balance){
+			System.out.println("You cannot withdraw more money than you have in your account.");
+		} else {
+			this.balance -= withdrawl;
+		}
+		String newBal = getBalanceString();
+		System.out.println("Your new balance is " + newBal);
 	} // End makeWithdrawl
 } // End class
