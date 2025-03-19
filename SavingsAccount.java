@@ -5,6 +5,7 @@ public class SavingsAccount extends CheckingAccount {
 
 	public static void main(String[] args){
 		SavingsAccount sa = new SavingsAccount();
+		sa.start();
 	}
 
 	public void calcInterest(){
@@ -14,7 +15,7 @@ public class SavingsAccount extends CheckingAccount {
 	public void setInterestRate(){
 		// I wanted to use getDouble here but it's private :(
 		System.out.println("Enter a value to set the interest rate.");
-		Scanner input = new Scanner(System.in);
+		java.util.Scanner input = new java.util.Scanner(System.in);
 		String userInput = input.nextLine();
 		this.interestRate = Double.parseDouble(userInput);
 		System.out.println("The new interest rate is " + interestRate);
