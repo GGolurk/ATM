@@ -1,6 +1,6 @@
 // Abstract user class wahoo
 
-public class User implements HasMenu{
+abstract class User implements HasMenu{
 	protected String userName;
 	protected String PIN;
 
@@ -46,9 +46,15 @@ public class User implements HasMenu{
 		return userName;
 	}
 
-	public void setPIN(PIN){
-		this.PIN = PIN;
-	}
+	public void setPIN(String pin){
+		if(pin.matches("^\\d{4}$")){
+			this.PIN = pin;
+		} else {
+			System.out.println("PIN must be four numeric digits.");
+			System.out.println("Setting PIN to '0000'");
+			this.PIN = "0000";
+		} // End if/else
+	} // End setPIN
 
 	public String getPIN(){
 		return PIN;
