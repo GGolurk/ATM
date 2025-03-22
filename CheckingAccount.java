@@ -7,8 +7,7 @@ public class CheckingAccount implements HasMenu{
 	protected double balance;
 
 	public static void main(String[] args){
-		CheckingAccount ca = new CheckingAccount();
-		ca.start();
+		//CheckingAccount ca = new CheckingAccount();
 	} // End main
 
 	public CheckingAccount(){

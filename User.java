@@ -12,7 +12,7 @@ abstract class User implements HasMenu{
 		System.out.println("Enter your PIN:");
 		String userPINInput = input.nextLine();
 		if(this.userName.equals(userNameInput)){
-			if(this.userPIN.equals(userPINInput)){
+			if(this.PIN.equals(userPINInput)){
 				return true;
 			} else {
 				System.out.println("Incorrect PIN. Have you tried '1111?'");
@@ -24,9 +24,9 @@ abstract class User implements HasMenu{
 		} // End if/else
 	} // End login
 
-	public Boolean login(userName, PIN){
-		if(this.userName.equals(userName)){{
-			if(this.userPIN.equals(userPIN)){
+	public Boolean login(String userName2, String PIN2){
+		if(userName.equals(userName2)){
+			if(PIN.equals(PIN2)){
 				return true;
 			} else {	
 				System.out.println("Incorrect PIN.");
@@ -38,7 +38,7 @@ abstract class User implements HasMenu{
 		} // End if/else
 	} // End pre-input login
 
-	public void setUserName(userName){
+	public void setUserName(String userName){
 		this.userName = userName;
 	}
 
@@ -59,4 +59,6 @@ abstract class User implements HasMenu{
 	public String getPIN(){
 		return PIN;
 	} // End getPIN
+
+	abstract String getReport();
 } // End user
