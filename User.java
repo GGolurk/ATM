@@ -15,11 +15,11 @@ abstract class User implements HasMenu{
 			if(this.PIN.equals(userPINInput)){
 				return true;
 			} else {
-				System.out.println("Incorrect PIN. Have you tried '1111?'");
+				System.out.println("Incorrect PIN.");
 				return false;
 			} // End if/else
 		} else {
-			System.out.println("Unknown user. Have you tried 'Alice?'");
+			System.out.println("Unknown user.");
 			return false;
 		} // End if/else
 	} // End login
