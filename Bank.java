@@ -1,5 +1,6 @@
 // The big stuff
 
+
 import java.util.*;
 import java.io.*;
 
@@ -11,9 +12,14 @@ public class Bank implements HasMenu{
 	// Methods
 	public static void main(String[] args){
 		Bank bank = new Bank();
-		loadSampleCustomers();
 		bank.start();
 	} // End main
+	public Bank(){
+		loadSampleCustomers();
+		// saveCustomers();
+		// loadCustomers();
+		// saveCustomers();
+	} // End constructor
 	public void start(){
 		Boolean keepGoing = true;
 		while(keepGoing == true){
@@ -33,7 +39,7 @@ public class Bank implements HasMenu{
 			} // End if
 			if(input.equals("2")){
 				correct = true;
-				System.out.println("testing");
+				loginAsCustomer();
 			} // End if
 			if(correct == false){
 				System.out.println("Invalid input. Exploding your computer.");
@@ -79,13 +85,35 @@ public class Bank implements HasMenu{
 		} // End while
 	} // End adminStart
 	public void loadSampleCustomers(){
-		Customer customer = new Customer("Alice", "1111");
-		CustomerList.add(customer);
-		Customer customer = new Customer("Bob", "2222");
-		CustomerList.add(customer);
-		Custoemr customer = new Customer("Cindy", "3333");
-		CustomerList.add(customer);
+		Customer alice = new Customer("Alice", "1111");
+		customers.add(alice);
+		Customer bob = new Customer("Bob", "2222");
+		customers.add(bob);
+		Customer cindy = new Customer("Cindy", "3333");
+		customers.add(cindy);
 	} // End sample
+	public void loginAsCustomer(){
+		System.out.println("");
+		System.out.println("Enter your username: ");
+		Scanner input = new Scanner(System.in);
+		String userInput = input.nextLine();
+		System.out.println("Enter your PIN: ");
+		String pinInput = input.nextLine();
+		Customer currentCustomer = null;
+		for(Customer customer: customers){
+			Boolean custTest = customer.login(userInput, pinInput);
+			if(custTest == true){
+				currentCustomer = customer;
+				currentCustomer.start();
+			} // End if
+		} // End for
+	} // End login as customer
+	public void fullCustomerReport(){
+	
+	}
+	public void addCustomer(){
+
+	}
 } // End bank
 
 class CustomerList extends ArrayList<Customer>{
