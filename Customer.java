@@ -29,44 +29,28 @@ public class Customer extends User{
 	} // End constructor (parameters))
 	
 	public void start(){
-		Boolean keepGoing = true;
-		while(keepGoing == true){
-			// Ask user for 0 or 1 for exit or login (for testing)
-			System.out.print("Enter 0 to exit or 1 to login");
-			Scanner input = new Scanner(System.in);
-			String userInput = input.nextLine();
-			if(userInput.equals("0")){
-				keepGoing = false;
+		// keepGoing2 because I used keepGoing in testing.
+		Boolean keepGoing2 = true;
+		// Actual while loop inside temp while loop
+		while(keepGoing2 == true){
+			String userIn = menu();
+			if(userIn.equals("0")){
+				keepGoing2 = false;
 			} // End if
-			if(userInput.equals("1")){
-				Boolean keepGoing2 = true;
-				Boolean userTest = login();
-				if(userTest == false){
-					keepGoing2 = false;
-				} // End if
-
-				// Actual while loop inside temp while loop
-				while(keepGoing2 == true){
-					String userIn = menu();
-					if(userIn.equals("0")){
-						keepGoing2 = false;
-					} // End if
-					if(userIn.equals("1")){
-						checking.start();
-					} // End if
-					if(userIn.equals("2")){
-						savings.start();
-					} // End if
-					if(userIn.equals("3")){
-						changePin();
-					} // End if
-					if(userIn.equals("4")){
-						String report = getReport();
-						System.out.println(report);						
-					} // End if
-				} // End while 2
+			if(userIn.equals("1")){
+				checking.start();
 			} // End if
-		} // End while temp
+			if(userIn.equals("2")){
+				savings.start();
+			} // End if
+			if(userIn.equals("3")){
+				changePin();
+			} // End if
+			if(userIn.equals("4")){
+				String report = getReport();
+				System.out.println(report);						
+			} // End if
+		} // End while 2
 	} // End start
 
 	public String menu(){

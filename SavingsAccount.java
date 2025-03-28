@@ -9,7 +9,7 @@ public class SavingsAccount extends CheckingAccount {
 	}
 
 	public void calcInterest(){
-		this.balance *= interestRate;
+		this.balance += this.balance * interestRate;
 	}
 
 	public void setInterestRate(){

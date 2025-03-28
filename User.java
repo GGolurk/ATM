@@ -25,15 +25,13 @@ abstract class User implements HasMenu{
 	} // End login
 
 	public Boolean login(String userName2, String PIN2){
-		if(userName.equals(userName2)){
-			if(PIN.equals(PIN2)){
+		if(this.userName.equals(userName2)){
+			if(this.PIN.equals(PIN2)){
 				return true;
 			} else {	
-				System.out.println("Incorrect PIN.");
 				return false;
 			} // End if/else
 		} else {
-			System.out.println("Unknown user.");
 			return false;
 		} // End if/else
 	} // End pre-input login
