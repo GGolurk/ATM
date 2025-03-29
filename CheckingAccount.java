@@ -1,10 +1,14 @@
 // Checking account for customers.
 
 import java.util.*;
+import java.io.*;
 
-public class CheckingAccount implements HasMenu{
+public class CheckingAccount implements HasMenu, Serializable{
 	// What this entire class revolves around
 	protected double balance;
+	// Looked at the internet to make sure that I implemented this correctly.
+	// I think static and final are here to make sure that the value cannot be changed.
+	protected static final long serialVersionUID = 1L;
 
 	public static void main(String[] args){
 		//CheckingAccount ca = new CheckingAccount();

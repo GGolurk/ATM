@@ -1,11 +1,13 @@
 // Last class of week 1 atm!
 
 import java.util.*;
+import java.io.*;
 
-public class Customer extends User{
+public class Customer extends User implements Serializable{
 	// Data
 	protected CheckingAccount checking;
 	protected SavingsAccount savings;
+	protected static final long serialVersionUID = 1L;
 
 	// Methods
 	public static void main(String[] args){

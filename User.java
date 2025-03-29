@@ -1,8 +1,11 @@
 // Abstract user class wahoo
 
-abstract class User implements HasMenu{
+import java.io.*;
+
+abstract class User implements HasMenu, Serializable{
 	protected String userName;
 	protected String PIN;
+	protected static final long serialVersionUID = 1L;
 
 	public Boolean login(){
 		System.out.println("");

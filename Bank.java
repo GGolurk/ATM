@@ -12,13 +12,13 @@ public class Bank implements HasMenu{
 	// Methods
 	public static void main(String[] args){
 		Bank bank = new Bank();
-		bank.start();
 	} // End main
 	public Bank(){
-		loadSampleCustomers();
-		// saveCustomers();
-		// loadCustomers();
-		// saveCustomers();
+		//loadSampleCustomers();
+		//saveCustomers();
+		loadCustomers();
+		this.start();
+		saveCustomers();
 	} // End constructor
 	public void start(){
 		Boolean keepGoing = true;
@@ -46,6 +46,8 @@ public class Bank implements HasMenu{
 				keepGoing = false;
 			} // End validation if
 		} // End while
+		// Saving customers when program ends
+		saveCustomers();
 	} // End start
 	public String menu(){
 		Scanner input = new Scanner(System.in);
@@ -134,10 +136,22 @@ public class Bank implements HasMenu{
 		} // End for
 	} // End apply interest
 	public void saveCustomers(){
-
+		try{
+			FileOutputStream fOut = new FileOutputStream("file.dat");
+			ObjectOutputStream oOut = new ObjectOutputStream(fOut);
+			oOut.writeObject(customers);
+		} catch(Exception e){
+			System.out.println("File error");
+		}
 	} // End saveCustomers
 	public void loadCustomers(){
-
+		try{
+			FileInputStream fIn = new FileInputStream("file.dat");
+			ObjectInputStream oIn = new ObjectInputStream(fIn);
+			customers = (CustomerList)oIn.readObject();
+		} catch(Exception e){
+			System.out.println("File error");
+		}
 	} // End loadCustomers
 } // End bank
 
